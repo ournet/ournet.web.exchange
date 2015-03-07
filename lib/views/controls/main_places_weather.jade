@@ -1,0 +1,14 @@
+table.weather-summary
+  each item in placesWeather
+    tr
+      td.name
+        a(href=links.weather.place(item.place.id, {ul: currentCulture.language}))= item.place.getName(currentCulture.language)
+      td.symbol
+        span.w-icon(class='wi'+item.weather.symbol.number, title=util.weather.symbolName(item.weather.symbol, currentCulture.language))
+      td.symbol-name= util.weather.symbolName(item.weather.symbol, currentCulture.language)
+      td.no.temperature= item.weather.t.value
+        |  &deg;
+      td.wind-dir
+        div(title=item.weather.wind.dir.code, class='wi'+item.weather.symbol.number)
+      td.wind-speed= item.weather.wind.speed.mps
+        = ' ' + __('item_wind_speed_ms')

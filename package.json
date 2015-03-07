@@ -1,0 +1,42 @@
+{
+  "name": "ournet.web.exchange",
+  "version": "0.0.1",
+  "description": "ournet web extention",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://Mitea@bitbucket.org/ournet/ournet.web.exchange.git"
+  },
+  "keywords": [
+    "ournet",
+    "web",
+    "exchange"
+  ],
+  "author": "Dumitru Cantea",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "dotenv": "^0.5.1",
+    "errorhandler": "^1.3.3",
+    "express": "^4.11.2",
+    "i18n": "^0.5.0",
+    "jade": "^1.9.2",
+    "method-override": "^2.3.1",
+    "moment": "^2.9.0",
+    "morgan": "^1.5.1",
+    "response-time": "^2.2.0",
+    "urlset": "^0.4.0",
+    "time": "^0.11.1",
+    "chroma-js": "^0.6.3",
+    "request": "^2.53.0",
+    "ournet.core": "https://npm.fury.io/G4qSJ8SL1vn1TcQvP9KP/dumitru/ournet.core/-/latest.tgz",
+    "ournet.data.places": "https://npm.fury.io/G4qSJ8SL1vn1TcQvP9KP/dumitru/ournet.data.places/-/latest.tgz",
+    "ournet.data.weather": "https://npm.fury.io/G4qSJ8SL1vn1TcQvP9KP/dumitru/ournet.data.weather/-/latest.tgz"
+  },
+  "devDependencies": {
+    "heapdump": "^0.3.5"
+  }
+}

@@ -1,0 +1,80 @@
+extends ./_layouts/weather
+block weather_content
+  #place-weather-title
+    if (shareInfo)
+      .our-sharedata.pull-right(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
+        each service in config.shareDataServices
+          a.our-share-item(class=service, data-service=service, href=shareInfo.getShareUrl(service), rel='nofollow', target='_blank', title=util.format(__('share_on_format'),util.startWithUpperCase(service)))
+            span.share-icon
+              i
+            span.share-count.hidden
+
+    h1= title
+  #place-weather-summary.group
+    h2.sinfo= site.head.description
+  if (report)
+    - var now = new Date()
+    .weather
+      table.weather-table
+        thead
+          tr
+            th
+            th
+            th= __('item_conditions')
+            th.no= __('item_temperatire')
+            th.no= __('item_pressure')
+            th= __('item_wind_dir')
+            th= __('item_wind_speed')
+        tbody
+          each day, i in report.days
+            tr
+              th(colspan='7', class='head')
+                div
+                  h3= util.moment(new Date(day.date)).locale(currentCulture.language).format('dddd, D MMMM')
+            each item, j in day.times
+              - var date = new Date(item.from)
+              if (new Date(item.to) > now)
+                tr(class=(j==day.times.length-1?'last-hour':null))
+                  - var symbol_name = util.weather.symbolName(item.symbol, currentCulture.language)
+                  td.hour= util.moment(date).format(config.hour_format)
+                  td.symbol
+                    span.w-icon(class='wi'+item.symbol.number, title=symbol_name)
+                  td.symbol-name= symbol_name
+                  td.no.temperature= item.t.value
+                    | &deg;
+                  td.no.pressure= item.pressure.value
+                  td.wind-dir
+                    div(alt=item.wind.dir.code, title=item.wind.dir.code, class=util.weather.windDirectionCss(item.wind.dir.code))
+                  td.wind-speed= item.wind.speed.mps +' '+ __('item_wind_speed_ms')
+                if (i==1 && j==day.times.length-1)
+                  tr
+                    td(colspan=7)
+                      .tab.view-ads.view-fill.no-margin.gads-468
+                        // Ournet 468x60
+                        ins.adsbygoogle(data-ad-client='ca-pub-3959589883092051', data-ad-slot='3749376618')
+                        script.
+                          (adsbygoogle = window.adsbygoogle || []).push({ });
+
+      #weather-source-footer
+        span#yr-logo
+        = __('weather_cright')
+      p.sinfo= subTitle
+
+
+block right_content
+  if (stories && stories.length>0)
+    .tab
+      .tab-title
+        h4= __('latest_news')
+      .tab-content
+        .list.ot-news.view-icon-line
+          each story, i in stories
+            if (i < 4)
+              .list-item.ot-news
+                .item.ot-news.media
+                  a.pull-left(href=story.url)
+                    img.story-img.media-object(alt='', src=('http://wi.ournetcdn.net/image/q_'+story.imagedate+'_'+story.imageid+'.jpg'))
+                  .media-body
+                    a(href=story.url)= story.title
+                    //- .details= util.moment(new Date(story.date)).format('LT')
+

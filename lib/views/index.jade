@@ -1,0 +1,29 @@
+extends ./_layouts/weather
+block weather_content
+  if (shareInfo)
+    .our-sharedata.pull-right(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
+      each service in config.shareDataServices
+        a.our-share-item(class=service, data-service=service, href=shareInfo.getShareUrl(service), rel='nofollow', target='_blank', title=util.format(__('share_on_format'),util.startWithUpperCase(service)))
+          span.share-icon
+            i
+          span.share-count.hidden
+  h1= title
+  h2.sinfo
+    = subTitle+' ('
+    a(href=links.weather.places({ul: currentCulture.language}))= util.format(__('other_n_places_format'),config.placesCount)
+    | )
+  br
+  - var date = util.moment(new Date()), datenow = util.moment(new Date())
+  - date = date.locale(currentCulture.language)
+  table#cn-summary
+    thead
+      tr.menu
+        th.selected.first(data-date=date.format('YYYY-MM-DD'))= __('today')
+        th(data-date=date.add(1, 'd').format('YYYY-MM-DD'))= date.format("dddd, D MMMM")
+        th(data-date=date.add(1, 'd').format('YYYY-MM-DD'))= date.format("dddd, D MMMM")
+        th(data-date=date.add(1, 'd').format('YYYY-MM-DD'))= date.format("dddd, D MMMM")
+    tbody
+      tr
+        td#w-summary-content(colspan='4')
+          include ./controls/main_places_weather.jade
+  br

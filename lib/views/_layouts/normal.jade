@@ -1,0 +1,42 @@
+extends ./layout
+
+block content_header
+  .row
+    .col-md-7.col-sm-14
+      #header-logo.pull-left
+        a(title=project.name, href=links.home({ul: currentCulture.language}))
+      #header-search.pull-left
+        form#q-form(method='get', action=links.weather.search())
+          if (currentCulture.language!=config.language)
+            input(type='hidden', name='ul', value=currentCulture.language)
+          input#q(name='q', type='text', placeholder=__('search_text'))
+          a#search-btn(onclick="$('#q-form').submit();")
+            span.icon
+    .col-md-7.hidden-sm.hidden-xs
+      #header-right-content
+        .row
+          .col-md-7
+          //-   if (exchangeWidget&&exchangeWidget.rates)
+          //-     #widget-exchange
+          //-       each item in exchangeWidget.rates
+          //-     | {
+          //-     | var value = item.SaleValue.Value;
+          //-     | var diff = value - item.YesterdayValue;
+          //-     | var diffCss = "view-no-change";
+          //-     | if(diff>0)
+          //-     | {
+          //-     | diffCss = "view-plus";
+          //-     | }
+          //-     | else if(diff
+          //-   |                                 }
+          //- |                         }
+          .col-md-7.col-sm-14
+            a#widget-w-link(href=links.weather.widget({ul: currentCulture.language}))
+              span.icon
+              = __('weather_on_your_site')
+
+block content
+  #layout-content(class="clearfix")
+    .container
+      block normal_content
+
