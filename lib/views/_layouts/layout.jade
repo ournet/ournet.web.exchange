@@ -8,7 +8,7 @@ html(lang=currentCulture.language)
     meta(name='description', content=site.head.description)
     meta(name='keywords', content=site.head.keywords)
     block styles
-    link(type='text/css', rel='stylesheet', href='http://assets.ournetcdn.net/ournet/css/weather/main-130e081d.min.css')
+    link(type='text/css', rel='stylesheet', href='http://assets.ournetcdn.net/ournet/css/exchange/main-5bba55c3.min.css')
     if (site.head.canonical)
       link(rel='canonical', href=site.head.canonical)
     link(rel='shortcut icon', href=config.favicon)
@@ -27,10 +27,9 @@ html(lang=currentCulture.language)
                       span.count= item.label
 
               #sys-user.col-sm-6.hidden-xs
-                if (config.languages.length>1)
-                  each key in config.languages
-                    if (key!=currentCulture.language)
-                      a.bar-item(href=links.home({ul:key}))= config.languagesNames[key]
+                each key in config.languages
+                  if (key!=currentCulture.language)
+                    a.bar-item(href=links.home({ul:key}))= config.languagesNames[key]
 
       #page-wrapper
         #page-header
@@ -61,38 +60,70 @@ html(lang=currentCulture.language)
               span.domain-Arts.ref-color &#9679;&#9679;&#9679;&#9679;
               span.domain-Justice.ref-color &#9679;&#9679;&#9679;
             .row
-              #page-footer-info.col-sm-5.col-xs-14
+              #page-footer-info.col-sm-4.col-xs-12
                 div= __('contact')+': '
                   a=  config.email
                 div
                 | Version 
                 = project.version
-                div
-                  a(href='http://www.yr.no', rel='nofollow', target='_blank')= __('weather_cright')
-              #page-footer-portals.col-sm-5.col-xs-14.clearfix
+
+              #page-footer-portals.col-sm-4.col-xs-12.clearfix
                 h4= __('international')
-                each id in config.internationalIds
-                  - var item = config.international[id]
+                each item, id in config.international
                   div
                     a(href=item.url, target='_blank')
                       i.flag-icon(class='flag-'+id)
                       = item[currentCulture.language]
 
-              #page-footer-social.col-sm-4.col-xs-14
+              #page-footer-social.col-sm-4.col-xs-12
                 if (shareInfo)
-                  .our-sharedata(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
+                  .our-sharedata.pull-right(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
                     each service in config.shareDataServices
                       a.our-share-item(class=service, data-service=service, href=shareInfo.getShareUrl(service), rel='nofollow', target='_blank', title=util.format(__('share_on_format'),util.startWithUpperCase(service)))
                         span.share-icon
                           i
                         span.share-count.hidden
 
+    script(type="text/ng-template", id="template/datepicker/datepicker.html").
+      <table>
+        <thead>
+          <tr>
+            <th><button type="button" class="btn btn-default btn-sm pull-left" ng-click="move(-1)">&lsaquo;</button></th>
+            <th colspan="{{rows[0].length - 2 + showWeekNumbers}}"><button type="button" class="btn btn-default btn-sm btn-block" ng-click="toggleMode()"><strong>{{title}}</strong></button></th>
+           <th><button type="button" class="btn btn-default btn-sm pull-right" ng-click="move(1)">&rsaquo;</button></th>
+          </tr>
+          <tr ng-show="labels.length > 0" class="h6">
+            <th ng-show="showWeekNumbers" class="text-center">#</th>
+           <th ng-repeat="label in labels" class="text-center">{{label}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in rows">
+            <td ng-show="showWeekNumbers" class="text-center"><em>{{ getWeekNumber(row) }}</em></td>
+            <td ng-repeat="dt in row" class="text-center">
+              <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected}" ng-click="select(dt.date)" ng-disabled="dt.disabled"><span ng-class="{'text-muted': dt.secondary}">{{dt.label}}</span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    script(type="text/ng-template", id="template/datepicker/popup.html").
+      <ul class="dropdown-menu" ng-style="{display: (isOpen && 'block') || 'none', top: position.top+'px', left: position.left+'px'}">
+        <li ng-transclude></li>
+        <li ng-show="showButtonBar" style="padding:10px 9px 2px">
+          <span class="btn-group">
+            <button type="button" class="btn btn-sm btn-info" ng-click="today()">{{currentText}}</button>
+            <button type="button" class="btn btn-sm btn-default" ng-click="showWeeks = ! showWeeks" ng-class="{active: showWeeks}">{{toggleWeeksText}}</button>
+            <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">{{clearText}}</button>
+          </span>
+          <button type="button" class="btn btn-sm btn-success pull-right" ng-click="isOpen = false">{{closeText}}</button>
+        </li>
+      </ul>
     if (!noGoogleAds)
       script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
     script.
       window.globalInitData={cn: '#{config.country}',ul:'#{currentCulture.language}'};
-    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
-    script(type='text/javascript', src='http://assets.ournetcdn.net/ournet/js/weather/main-295c601a.min.js')
+    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js')
+    script(type='text/javascript', src='http://assets.ournetcdn.net/ournet/js/exchange/main-eeda0973.min.js')
     block scripts
     
     script.

@@ -1,0 +1,30 @@
+#g-ex-ctrl
+	table(ng-controller='MainTableExchangeCtrl', ng-init="sourceid=source.id;refid='"+config.mainCurrencies[0]+"';refvalue=@Model.RefCurrencyValue.ToString(CultureInfo.InvariantCulture);data={};"+ratesInitData)
+		thead
+			tr.convertor
+				th(ng-class="{active:refid=='"+config.currency+"'}")
+					.inner
+						.currency= config.currency
+						input.currency-value(type='text', ng-model="value['"+config.currency+"']", currency-input='', ng-keyup="changeInput('"+config.currency+"',$event)", ng-focus="focutInput('"+config.currency+"',$event);")
+				each item in config.mainCurrencies
+					th(colspan='2', ng-class="{active:refid=='"+item +"'}")
+						.inner
+							.currency= item
+							input.currency-value(type='text', ng-model="value['"+item+"']", currency-input='', ng-keyup="changeInput('"+item+"',$event)", ng-focus="focutInput('"+item+"',$event);")
+
+			tr.col-names
+				th.name-col= __('name')
+				each item in config.mainCurrencies
+					th.num-col.col-first= __('buy')
+					th.num-col.col-last= __('sale')
+
+		tbody.data
+			each pair in rates
+				tr(class='source-type-'+(pair.source.isCentral?'1':'2'), ng-click='selectSource('+pair.source.id+')', ng-class='{active:sourceid=='+pair.source.id+'}')
+					th(title=pair.source.getName(currentCulture.language))= pair.source.getShortName(currentCulture.language)
+					each rate in pair.rates
+						if rate.buy==rate.sale
+							td.col-last.col-first(colspan='2')= rate.buy
+						else
+							td.col-first= rate.buy
+							td.col-last= rate.sale
