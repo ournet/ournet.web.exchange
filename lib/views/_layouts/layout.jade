@@ -8,7 +8,7 @@ html(lang=currentCulture.language)
     meta(name='description', content=site.head.description)
     meta(name='keywords', content=site.head.keywords)
     block styles
-    link(type='text/css', rel='stylesheet', href='http://assets.ournetcdn.net/ournet/css/exchange/main-5bba55c3.min.css')
+    link(type='text/css', rel='stylesheet', href='http://assets.ournetcdn.net/ournet/css/exchange/main-3f24f719.min.css')
     if (site.head.canonical)
       link(rel='canonical', href=site.head.canonical)
     link(rel='shortcut icon', href=config.favicon)
@@ -19,7 +19,7 @@ html(lang=currentCulture.language)
         #sys-top-bar
           .container
             .row
-              #sys-menu.col-sm-8.col-xs-14
+              #sys-menu.col-sm-6.col-xs-12
                 each item in topBarMenu
                   a(href=item.href, class=item.cssClass)
                     = item.text
@@ -121,7 +121,7 @@ html(lang=currentCulture.language)
     if (!noGoogleAds)
       script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
     script.
-      window.globalInitData={cn: '#{config.country}',ul:'#{currentCulture.language}'};
+      window.globalInitData={cn: '#{config.country}',ul:'#{currentCulture.language}',currency:'#{config.currency}'};
     script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js')
     script(type='text/javascript', src='http://assets.ournetcdn.net/ournet/js/exchange/main-eeda0973.min.js')
     block scripts

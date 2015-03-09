@@ -2,27 +2,30 @@ extends ./layout
 
 block content_header
   .row
-    .col-sm-6.col-xs-12
+    .col-sm-5.col-xs-6
       #header-logo
         a(title=project.name, href=links.home({ul: currentCulture.language}))
-    .col-sm-6.hidden-xs
+    .col-sm-7.col-xs-6
       #header-right-content
         .row
-          .col-md-6
-          //-   if (exchangeWidget && exchangeWidget.rates)
-          //-     #widget-exchange
-          //-       each item in exchangeWidget.rates
-          //-     | {
-          //-     | var value = item.SaleValue.Value;
-          //-     | var diff = value - item.YesterdayValue;
-          //-     | var diffCss = "view-no-change";
-          //-     | if(diff>0)
-          //-     | {
-          //-     | diffCss = "view-plus";
-          //-     | }
-          //-     | else if(diff
-          //-   |                                 }
-          //- |                         }
+          .col-md-6.hidden-xs.hidden-sm
+            if (exchangeWidget && exchangeWidget.rates)
+              #widget-exchange
+                each item in exchangeWidget.rates
+                  - var value = item.buy
+                  - var diff = value - item.buy1d
+                  - var diffCss = diff>0 ? "view-plus": "view-minus"
+                  - diffCss = diff==0 || diff==NaN?'view-no-change': diffCss
+                  div(class="item "+diffCss)
+                    .symbol= util.getHtmlSymbol(item.currency)
+                    span(class="value")= value
+                    .popover
+                      small(class="details")= util.moment(new Date()).locale(currentCulture.language).format('M')
+                      .item-source(title=exchangeWidget.source.getName(currentCulture.language))= exchangeWidget.source.getAbbr(currentCulture.language)
+                      .item-value=value
+                      if(diff)
+                        small(class="item-diff")= diff
+
           .col-md-6.col-sm-12
             if (weatherWidget)
               #widget-weather

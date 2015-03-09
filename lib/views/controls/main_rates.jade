@@ -1,5 +1,5 @@
 #g-ex-ctrl
-	table(ng-controller='MainTableExchangeCtrl', ng-init="sourceid=source.id;refid='"+config.mainCurrencies[0]+"';refvalue=@Model.RefCurrencyValue.ToString(CultureInfo.InvariantCulture);data={};"+ratesInitData)
+	table(ng-controller='MainTableExchangeCtrl', ng-init="sourceid=source.id;refid='"+config.mainCurrencies[0]+"';refvalue=100;data={};"+ratesInitData)
 		thead
 			tr.convertor
 				th(ng-class="{active:refid=='"+config.currency+"'}")
