@@ -1,12 +1,12 @@
 #g-ex-ctrl
-	table(ng-controller='MainTableExchangeCtrl', ng-init="sourceid=source.id;refid='"+config.mainCurrencies[0]+"';refvalue=100;data={};"+ratesInitData)
+	table(ng-controller='MainTableExchangeCtrl', ng-init="sourceid="+config.source+";refid='"+config.currencies[0]+"';refvalue=100;data={};"+ratesInitData)
 		thead
 			tr.convertor
 				th(ng-class="{active:refid=='"+config.currency+"'}")
 					.inner
 						.currency= config.currency
 						input.currency-value(type='text', ng-model="value['"+config.currency+"']", currency-input='', ng-keyup="changeInput('"+config.currency+"',$event)", ng-focus="focutInput('"+config.currency+"',$event);")
-				each item in config.mainCurrencies
+				each item in config.currencies
 					th(colspan='2', ng-class="{active:refid=='"+item +"'}")
 						.inner
 							.currency= item
@@ -14,7 +14,7 @@
 
 			tr.col-names
 				th.name-col= __('name')
-				each item in config.mainCurrencies
+				each item in config.currencies
 					th.num-col.col-first= __('buy')
 					th.num-col.col-last= __('sale')
 

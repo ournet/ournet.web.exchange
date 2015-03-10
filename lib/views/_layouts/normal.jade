@@ -2,10 +2,10 @@ extends ./layout
 
 block content_header
   .row
-    .col-sm-5.col-xs-6
+    .col-sm-4.col-xs-6
       #header-logo
         a(title=project.name, href=links.home({ul: currentCulture.language}))
-    .col-sm-7.col-xs-6
+    .col-sm-8.col-xs-6
       #header-right-content
         .row
           .col-md-6.hidden-xs.hidden-sm
@@ -17,14 +17,14 @@ block content_header
                   - var diffCss = diff>0 ? "view-plus": "view-minus"
                   - diffCss = diff==0 || diff==NaN?'view-no-change': diffCss
                   div(class="item "+diffCss)
-                    .symbol= util.getHtmlSymbol(item.currency)
-                    span(class="value")= value
+                    .symbol= item.currency.symbol
+                    span(class="value")= util.numberFormat(value, 2, currentCulture.language)
                     .popover
-                      small(class="details")= util.moment(new Date()).locale(currentCulture.language).format('M')
+                      small(class="details")= util.moment(new Date()).locale(currentCulture.language).format(config.monthFormat)
                       .item-source(title=exchangeWidget.source.getName(currentCulture.language))= exchangeWidget.source.getAbbr(currentCulture.language)
-                      .item-value=value
+                      .item-value= util.numberFormat(value, 4, currentCulture.language)
                       if(diff)
-                        small(class="item-diff")= diff
+                        small(class="item-diff")= util.numberFormat(diff, 4, currentCulture.language)
 
           .col-md-6.col-sm-12
             if (weatherWidget)

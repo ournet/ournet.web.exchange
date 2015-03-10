@@ -5,6 +5,7 @@
     "home": "/",
     "controls": {
       "mainRates": "/main_rates/${0}.json"
-    }
+    },
+    "rates":"/rates/${0}"
   }
 }

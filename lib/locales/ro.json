@@ -16,5 +16,14 @@
 	"index_details_format": "index_details_format",
 	"name": "name",
 	"buy": "buy",
-	"sale": "sale"
+	"sale": "sale",
+	"exchange_rates": "exchange_rates",
+	"bank_info_format": "bank_info_format",
+	"bank_details_format": "bank_details_format",
+	"symbol": "symbol",
+	"currency": "currency",
+	"rate": "rate",
+	"trend": "trend",
+	"7days_ago": "7days_ago",
+	"30days_ago": "30days_ago"
 }

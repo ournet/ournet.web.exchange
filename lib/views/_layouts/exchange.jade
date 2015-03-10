@@ -9,7 +9,7 @@ block normal_content
         .menu
           each item in banks
             .item
-              a(href=item.href, title=item.text, class=item.cssClass)= item.getName(currentCulture.language)
+              a(href=links.exchange.rates(item.uniqueName.toLowerCase()), class=(source && source.id==item.id?'active':null))= item.getShortName(currentCulture.language)
 
     #page-data.col-sm-10.col-xs-12
       #page-data-inner

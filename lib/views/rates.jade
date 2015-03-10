@@ -1,0 +1,81 @@
+extends ./_layouts/exchange
+block exchange_content
+  div
+    .content-header
+      .row
+        .col-xs-9
+          h1= __('exchange_rates') +': '+source.getShortName()
+          span.date-picker-label.view-static
+            span= util.moment(new Date()).locale(currentCulture.language).format('LL')
+          .text-muted= util.format(__('bank_info_format'),source.getName(currentCulture.language))
+
+        .col-xs-3
+          if (shareInfo)
+            .our-sharedata.pull-right(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
+              each service in config.shareDataServices
+                a.our-share-item(class=service, data-service=service, href=shareInfo.getShareUrl(service), rel='nofollow', target='_blank', title=util.format(__('share_on_format'),util.startWithUpperCase(service)))
+                  span.share-icon
+                    i
+                  span.share-count.hidden
+    
+    #rates-exchange-table
+      if (source.isCentral)
+        .list.ot-rates.view-bank
+          table
+            thead
+              tr
+                th.name-col= __('symbol')
+                th.name-col= __('currency')
+                th.num-col= __('rate')
+                th.num-col= __('trend')
+                th.num-col= __('7days_ago')
+                th.num-col= __('30days_ago')
+            tbody
+              each item in rates
+                - var diff = (item.buy - item.buy7d);
+                - var diffclass = "";
+                - if (diff!=0)
+                -  diffclass = diff < 0 ? "minus" : "plus";
+                tr
+                  th.name-col= (item.multiplier>1?item.multiplier:'')+item.currency.code
+                  th.name-col= item.currency.getName(currentCulture.language)
+                  td.num-col.col-last.col-first= util.numberFormat(item.buy, 4, currentCulture.language)
+                  td.num-col.col-last.col-first(class=diffclass)= util.numberFormat(diff, 4, currentCulture.language)
+                  td.num-col.col-last.col-first= util.numberFormat(item.but7d, 4, currentCulture.language)
+                  td.num-col.col-last.col-first= util.numberFormat(item.but30d, 4, currentCulture.language)
+
+      else
+        .list.ot-rates.view-bank
+          table
+            thead
+              tr
+                th(colspan='2')
+                th(colspan='2')= __('rate')
+                th(colspan='2')= __('7days_ago')
+                th(colspan='2')= __('30days_ago')
+              tr
+                th.name-col= __('symbol')
+                th.name-col= __('currency')
+                th.num-col= __('buy')
+                th.num-col= __('sale')
+                th.num-col= __('buy')
+                th.num-col= __('sale')
+                th.num-col= __('buy')
+                th.num-col= __('sale')
+            tbody
+              each item in rates
+                tr
+                  th.name-col= (item.multiplier>1?item.multiplier:'')+item.currency.code
+                  th.name-col=item.currency.getName(currentCulture.language)
+                  td.num-col= util.numberFormat(item.buy, 4, currentCulture.language)
+                  td.num-col.col-last= util.numberFormat(item.sale, 4, currentCulture.language)
+                  td.num-col= util.numberFormat(item.buy7d, 4, currentCulture.language)
+                  td.num-col.col-last= util.numberFormat(item.sale7d, 4, currentCulture.language)
+                  td.num-col= util.numberFormat(item.buy30d, 4, currentCulture.language)
+                  td.num-col.col-last= util.numberFormat(item.sale30d, 4, currentCulture.language)
+
+    br
+    h2(class="sinfo")= util.format(__('bank_details_format'),source.getName(currentCulture.language),currentCulture.countryName)
+    br
+
+
