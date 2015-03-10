@@ -11,10 +11,3 @@ Disallow: /weather/actions
 Disallow: /controls
 Disallow: /actions
 Disallow: /settings
-Disallow: /vremea/widget/actions
-Disallow: /widget/widgetframe
-Disallow: /widget2/widgetframe
-Disallow: /widget/widget_frame
-Disallow: /widget2/widget_frame
-Disallow: /widget/widget_script
-Disallow: /widget2/widget_script
