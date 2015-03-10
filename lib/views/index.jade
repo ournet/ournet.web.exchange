@@ -5,11 +5,12 @@ block exchange_content
         .row
           .col-xs-8
             h1= __('index_h1')
+              | &nbsp;
             span.date-picker
               span.date-picker-label(ng-click='open($event)', datepicker-popup='{{format}}', is-open='opened', ng-model='date', min="'"+minDateFormated+"'", show-weeks='false', show-button-bar='false', max="'"+todayFormated+"'", ng-required='true')
                 span(ng-bind="date|date:'longDate'")= util.moment(new Date()).locale(currentCulture.language).format('LL')
                 span.caret
-            .text-muted= util.format(__('index_info_format'), mainExchangeSource.name)
+            .text-muted= site.head.description
           .col-xs-4
             if (shareInfo)
               .our-sharedata.pull-right(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
@@ -21,6 +22,6 @@ block exchange_content
       #general-exchange-table
         include ./controls/main_rates.jade
       br
-      h2.sinfo= util.format(__('index_details_format'),mainExchangeSource.name,currentCulture.countryName)
+      h2.sinfo= util.format(__('index_details_format'),mainSource.getName(currentCulture.language), currentCulture.countryName, mainSource.getAbbr(currentCulture.language))
       br
 

@@ -9,7 +9,7 @@ block normal_content
         .menu
           each item in banks
             .item
-              a(href=links.exchange.rates(item.uniqueName.toLowerCase()), class=(source && source.id==item.id?'active':null))= item.getShortName(currentCulture.language)
+              a(href=links.exchange.rates(item.uniqueName.toLowerCase(), {ul: currentCulture.language}), class=(source && source.id==item.id?'active':null))= item.getShortName(currentCulture.language)
 
     #page-data.col-sm-10.col-xs-12
       #page-data-inner
@@ -18,15 +18,15 @@ block normal_content
             block exchange_content
             br
             .text-center
-              //- // Ournet 468x60
-              //- ins.adsbygoogle(style='display:inline-block;width:468px;height:60px', data-ad-client='ca-pub-3959589883092051', data-ad-slot='3749376618')
-              //- script.
-              //-   (adsbygoogle = window.adsbygoogle || []).push({});
+              // Ournet 468x60
+              ins.adsbygoogle(style='display:inline-block;width:468px;height:60px', data-ad-client='ca-pub-3959589883092051', data-ad-slot='3749376618')
+              script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
           .col-md-3.hidden-sm.hidden-xs
             #page-content-right
               block right_content
-              //- .tab.view-ads
-              //-   // Ournet v3 160x600
-              //-   ins.adsbygoogle(style='display:inline-block;width:160px;height:600px', data-ad-client='ca-pub-3959589883092051', data-ad-slot='4309098236')
-              //-   script.
-              //-     (adsbygoogle = window.adsbygoogle || []).push({});
+              .tab.view-ads
+                // Ournet v3 160x600
+                ins.adsbygoogle(style='display:inline-block;width:160px;height:600px', data-ad-client='ca-pub-3959589883092051', data-ad-slot='4309098236')
+                script.
+                  (adsbygoogle = window.adsbygoogle || []).push({});

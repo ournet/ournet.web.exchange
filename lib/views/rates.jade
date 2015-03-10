@@ -5,9 +5,10 @@ block exchange_content
       .row
         .col-xs-9
           h1= __('exchange_rates') +': '+source.getShortName()
+            | &nbsp;
           span.date-picker-label.view-static
             span= util.moment(new Date()).locale(currentCulture.language).format('LL')
-          .text-muted= util.format(__('bank_info_format'),source.getName(currentCulture.language))
+          .text-muted= site.head.description
 
         .col-xs-3
           if (shareInfo)
@@ -75,7 +76,7 @@ block exchange_content
                   td.num-col.col-last= util.numberFormat(item.sale30d, 4, currentCulture.language)
 
     br
-    h2(class="sinfo")= util.format(__('bank_details_format'),source.getName(currentCulture.language),currentCulture.countryName)
+    h2(class="sinfo")= util.format(__('bank_details_format'),source.getName(currentCulture.language),currentCulture.countryName, source.getName(currentCulture.language))
     br
 
 
