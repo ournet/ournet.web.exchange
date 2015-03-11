@@ -42,8 +42,8 @@ block exchange_content
                   th.name-col= item.currency.getName(currentCulture.language)
                   td.num-col.col-last.col-first= util.numberFormat(item.buy, 4, currentCulture.language)
                   td.num-col.col-last.col-first(class=diffclass)= util.numberFormat(diff, 4, currentCulture.language)
-                  td.num-col.col-last.col-first= util.numberFormat(item.but7d, 4, currentCulture.language)
-                  td.num-col.col-last.col-first= util.numberFormat(item.but30d, 4, currentCulture.language)
+                  td.num-col.col-last.col-first= util.numberFormat(item.buy7d, 4, currentCulture.language)
+                  td.num-col.col-last.col-first= util.numberFormat(item.buy30d, 4, currentCulture.language)
 
       else
         .list.ot-rates.view-bank
