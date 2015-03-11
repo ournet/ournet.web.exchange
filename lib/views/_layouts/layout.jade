@@ -69,10 +69,11 @@ html(lang=currentCulture.language, ng-app="ournet")
               #page-footer-portals.col-sm-4.col-xs-12.clearfix
                 h4= __('international')
                 each item, id in config.international
-                  div
-                    a(href=item.url, target='_blank')
-                      i.flag-icon(class='flag-'+id)
-                      = item[currentCulture.language]
+                  if (id!=config.country)
+                    div
+                      a(href=item.url, target='_blank')
+                        i.flag-icon(class='flag-'+id)
+                        = item[currentCulture.language]
 
               #page-footer-social.col-sm-4.col-xs-12
                 if (shareInfo)

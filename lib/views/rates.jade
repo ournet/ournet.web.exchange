@@ -7,7 +7,7 @@ block exchange_content
           h1= __('exchange_rates') +': '+source.getShortName()
             | &nbsp;
           span.date-picker-label.view-static
-            span= util.moment(new Date()).locale(currentCulture.language).format('LL')
+            span= util.moment(currentDateFormated).locale(currentCulture.language).format('LL')
           .text-muted= site.head.description
 
         .col-xs-3

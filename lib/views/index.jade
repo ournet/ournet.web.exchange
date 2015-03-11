@@ -1,14 +1,14 @@
 extends ./_layouts/exchange
 block exchange_content
-  div(ng-controller='GeneralExchangeCtrl', ng-init="date='"+todayFormated+"'")
+  div(ng-controller='GeneralExchangeCtrl', ng-init="date='"+currentDateFormated+"'")
       .content-header
         .row
           .col-xs-8
             h1= __('index_h1')
               | &nbsp;
             span.date-picker
-              span.date-picker-label(ng-click='open($event)', datepicker-popup='{{format}}', is-open='opened', ng-model='date', min="'"+minDateFormated+"'", show-weeks='false', show-button-bar='false', max="'"+todayFormated+"'", ng-required='true')
-                span(ng-bind="date|date:'longDate'")= util.moment(new Date()).locale(currentCulture.language).format('LL')
+              span.date-picker-label(ng-click='open($event)', datepicker-popup='{{format}}', is-open='opened', ng-model='date', min="'"+minDateFormated+"'", show-weeks='false', show-button-bar='false', max="'"+currentDateFormated+"'", ng-required='true')
+                span(ng-bind="date|date:'longDate'")= util.moment(currentDateFormated).locale(currentCulture.language).format('LL')
                 span.caret
             .text-muted= site.head.description
           .col-xs-4

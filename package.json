@@ -1,6 +1,6 @@
 {
   "name": "ournet.web.exchange",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "ournet web extention",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,6 @@
     "morgan": "^1.5.1",
     "response-time": "^2.2.0",
     "urlset": "^0.4.0",
-    "time": "^0.11.1",
     "chroma-js": "^0.6.3",
     "request": "^2.53.0"
   },
