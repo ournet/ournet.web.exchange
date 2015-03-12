@@ -25,7 +25,7 @@
 					th(title=pair.source.getName(currentCulture.language))= pair.source.getShortName(currentCulture.language)
 					each rate in pair.rates
 						if rate.buy==rate.sale
-							td.col-last.col-first(colspan='2')= rate.buy
+							td.col-last.col-first(colspan='2')= util.numberFormat(rate.buy, currentCulture.language)
 						else
-							td.col-first= rate.buy
-							td.col-last= rate.sale
+							td.col-first= util.numberFormat(rate.buy, currentCulture.language)
+							td.col-last= util.numberFormat(rate.sale, currentCulture.language)
