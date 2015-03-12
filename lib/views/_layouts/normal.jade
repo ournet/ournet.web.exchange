@@ -27,7 +27,7 @@ block content_header
                         small(class="item-diff")= util.numberFormat(diff, 4, currentCulture.language)
 
           .col-md-6.col-sm-12
-            if (weatherWidget)
+            if (weatherWidget && weatherWidget.forecast)
               #widget-weather
                 span.symbol
                   img(alt='', src='http://assets.ournetcdn.net/root/img/icons/weather/48/'+weatherWidget.forecast.symbol.id+'.png', title=weatherWidget.forecast.symbol.name)
