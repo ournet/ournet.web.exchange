@@ -17,7 +17,7 @@ block content_header
                   - var diffCss = diff>0 ? "view-plus": "view-minus"
                   - diffCss = diff==0 || diff==NaN?'view-no-change': diffCss
                   div(class="item "+diffCss)
-                    .symbol= item.currency.symbol
+                    .symbol!= item.currency.htmlName
                     span(class="value")= util.numberFormat(value, 2, currentCulture.language)
                     .popover
                       small(class="details")= util.moment(new Date()).locale(currentCulture.language).format(config.monthFormat)
