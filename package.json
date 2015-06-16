@@ -30,10 +30,7 @@
     "morgan": "^1.5.1",
     "response-time": "^2.2.0",
     "urlset": "^0.4.0",
-    "chroma-js": "^0.6.3",
-    "ournet.core": "https://npm.fury.io/G4qSJ8SL1vn1TcQvP9KP/dumitru/ournet.core/-/latest.tgz",
-    "ournet.data": "https://npm.fury.io/G4qSJ8SL1vn1TcQvP9KP/dumitru/ournet.data/-/latest.tgz",
-    "ournet.data.exchange": "https://npm.fury.io/G4qSJ8SL1vn1TcQvP9KP/dumitru/ournet.data.exchange/-/latest.tgz"
+    "chroma-js": "^0.6.3"
   },
   "devDependencies": {
     "heapdump": "^0.3.5"
