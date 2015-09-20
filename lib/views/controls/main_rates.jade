@@ -1,6 +1,6 @@
 #g-ex-ctrl
 	- var currencies=util._.take(config.currencies, config.mainCurrenciesCount)
-	table(ng-controller='MainTableExchangeCtrl', ng-init="sourceid="+config.source+";refid='"+config.currencies[0]+"';refvalue=100;data={};"+ratesInitData)
+	table(ng-controller='MainTableExchangeCtrl', ng-init="sourceid="+selectedSourceId+";refid='"+config.currencies[0]+"';refvalue=100;data={};"+ratesInitData)
 		thead
 			tr.convertor
 				th(ng-class="{active:refid=='"+config.currency+"'}")
