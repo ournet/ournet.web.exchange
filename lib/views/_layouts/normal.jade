@@ -20,7 +20,7 @@ block content_header
                     .symbol!= item.currency.htmlName
                     span(class="value")= util.numberFormat(value, 2, currentCulture.language)
                     .popover
-                      small(class="details")= util.moment(new Date()).locale(currentCulture.language).format(config.monthFormat)
+                      small(class="details")= util.moment(exchangeWidget.date).locale(currentCulture.language).format(config.monthFormat)
                       .item-source(title=exchangeWidget.source.getName(currentCulture.language))= exchangeWidget.source.getAbbr(currentCulture.language)
                       .item-value= util.numberFormat(value, 4, currentCulture.language)
                       if(diff)
