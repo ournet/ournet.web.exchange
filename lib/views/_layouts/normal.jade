@@ -17,11 +17,11 @@ block content_header
                   - var diffCss = diff>0 ? "view-plus": "view-minus"
                   - diffCss = diff==0 || diff==NaN?'view-no-change': diffCss
                   div(class="item "+diffCss)
-                    .symbol!= item.currency.htmlName
+                    .symbol!= item.currency.symbol
                     span(class="value")= util.numberFormat(value, 2, currentCulture.language)
                     .popover
                       small(class="details")= util.moment(exchangeWidget.date).locale(currentCulture.language).format(config.monthFormat)
-                      .item-source(title=exchangeWidget.source.getName(currentCulture.language))= exchangeWidget.source.getAbbr(currentCulture.language)
+                      .item-source(title=exchangeWidget.source.name)= exchangeWidget.source.abbr
                       .item-value= util.numberFormat(value, 4, currentCulture.language)
                       if(diff)
                         small(class="item-diff")= util.numberFormat(diff, 4, currentCulture.language)
