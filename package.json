@@ -1,10 +1,10 @@
 {
   "name": "ournet.web.exchange",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "ournet web extention",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "start": "node index"
   },
   "repository": {
@@ -29,7 +29,7 @@
     "method-override": "^2.3.1",
     "moment": "^2.9.0",
     "morgan": "^1.5.1",
-    "ournet.core": "^0.1.7",
+    "ournet.core": "^0.1.8",
     "ournet.data": "^0.0.6",
     "ournet.data.exchange": "^0.0.8",
     "response-time": "^2.2.0",

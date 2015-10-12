@@ -22,7 +22,9 @@
 		tbody.data
 			each pair in rates
 				tr(class='source-type-'+(pair.source.isCentral?'1':'2'), ng-click='selectSource('+pair.source.id+')', ng-class='{active:sourceid=='+pair.source.id+'}')
-					th(title=pair.source.getName(currentCulture.language))= pair.source.getShortName(currentCulture.language)
+					- var shortName = pair.source.getShortName(currentCulture.language);
+					- shortName = shortName.length > 20 ? (pair.source.abbr || shortName) : shortName;
+					th(title=pair.source.getName(currentCulture.language))= shortName
 					each rate in pair.rates
 						if rate.buy==rate.sale
 							td.col-last.col-first(colspan='2')= util.numberFormat(rate.buy, currentCulture.language)
