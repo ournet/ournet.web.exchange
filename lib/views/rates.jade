@@ -2,22 +2,19 @@ extends ./_layouts/exchange
 block exchange_content
   div
     .content-header
-      .row
-        .col-xs-9
-          h1= __('exchange_rates') +': '+source.getShortName()
-            | &nbsp;
-          span.date-picker-label.view-static
-            span= util.moment(currentDateFormated).locale(currentCulture.language).format('LL')
-          .text-muted= site.head.description
+        h1= __('exchange_rates') +': '+source.getShortName()
+          | &nbsp;
+        span.date-picker-label.view-static
+          span= util.moment(currentDateFormated).locale(currentCulture.language).format('LL')
+        .text-muted= site.head.description
 
-        .col-xs-3
-          if (shareInfo)
-            .our-sharedata.pull-right(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
-              each service in config.shareDataServices
-                a.our-share-item(class=service, data-service=service, href=shareInfo.getShareUrl(service), rel='nofollow', target='_blank', title=util.format(__('share_on_format'),util.startWithUpperCase(service)))
-                  span.share-icon
-                    i
-    
+    if (shareInfo)
+      .our-sharedata.clearfix(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
+        each service in config.shareDataServices
+          a.our-share-item(class=service, data-service=service, href=shareInfo.getShareUrl(service), rel='nofollow', target='_blank', title=util.format(__('share_on_format'),util.startWithUpperCase(service)))
+            span.share-icon
+              i   
+      br 
     #rates-exchange-table
       if (source.isCentral)
         .list.ot-rates.view-bank
