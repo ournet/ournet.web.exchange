@@ -1,6 +1,2 @@
 
-### start exchange web app
-
-#forever stopall
-
-(export PORT=4201 && forever start index.js -c "node")
+pm2 stop ./pm2.json && pm2 start ./pm2.json
