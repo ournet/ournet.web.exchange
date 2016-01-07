@@ -3,13 +3,14 @@
   "version": "2.1.0",
   "description": "ournet web extention",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "start": "node index"
   },
   "repository": {
     "type": "git",
-    "url": "https://Mitea@bitbucket.org/ournet/ournet.web.exchange.git"
+    "url": "https://github.com/Ournet/ournet.web.exchange.git"
   },
   "keywords": [
     "ournet",
