@@ -12,12 +12,12 @@ block exchange_content
                 span.caret
             .text-muted= site.head.description
           .col-xs-4
-            if (shareInfo)
-              .our-sharedata.pull-right(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
-                each service in config.shareDataServices
-                  a.our-share-item(class=service, data-service=service, href=shareInfo.getShareUrl(service), rel='nofollow', target='_blank', title=util.format(__('share_on_format'),util.startWithUpperCase(service)))
-                    span.share-icon
-                      i
+            //- if (shareInfo)
+            //-   .our-sharedata.pull-right(data-appname='ournet', data-identifier=shareInfo.identifier, data-title=shareInfo.title, data-cid=shareInfo.clientId)
+            //-     each service in config.shareDataServices
+            //-       a.our-share-item(class=service, data-service=service, href=shareInfo.getShareUrl(service), rel='nofollow', target='_blank', title=util.format(__('share_on_format'),util.startWithUpperCase(service)))
+            //-         span.share-icon
+            //-           i
       #general-exchange-table
         include ./controls/main_rates.jade
       br
