@@ -1,6 +1,6 @@
 extends ./_layouts/exchange
 block exchange_content
-  div(ng-controller='GeneralExchangeCtrl', ng-init="date='"+currentDateFormated+"'")
+  div(ng-controller='GeneralExchangeCtrl', ng-init="date='"+currentDateFormated+"'; urlFormat='"+links.exchange.controls.exchangeTable('@date', {ul: currentCulture.language})+"'")
       .content-header
         .row
           .col-xs-8

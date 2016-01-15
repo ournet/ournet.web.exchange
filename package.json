@@ -1,6 +1,6 @@
 {
   "name": "ournet.web.exchange",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "ournet web extention",
   "main": "./lib/app.js",
   "private": true,
@@ -33,7 +33,7 @@
     "moment": "^2.9.0",
     "morgan": "^1.5.1",
     "ournet.data": "^0.1.1",
-    "ournet.data.exchange": "^0.2.0",
+    "ournet.data.exchange": "^0.2.1",
     "ournet.logger": "^0.1.0",
     "ournet.utils": "^0.1.0",
     "response-time": "^2.2.0",

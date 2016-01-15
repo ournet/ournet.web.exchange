@@ -1,0 +1,12 @@
+{
+  "home": "/",
+  "exchange": {
+    "$root": true,
+    "home": "/",
+    "controls": {
+      "mainRates": "/main_rates/${0}.json",
+      "exchangeTable": "/generalexchangetable/${0}"
+    },
+    "rates": "/rates/${0}"
+  }
+}
