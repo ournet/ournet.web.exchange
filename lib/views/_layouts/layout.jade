@@ -8,8 +8,8 @@ html(lang=currentCulture.language, ng-app="ournet")
     meta(name='description', content=site.head.description)
     meta(name='keywords', content=site.head.keywords)
     block styles
-    link(type='text/css', rel='stylesheet', href='http://assets.ournetcdn.net/ournet/css/exchange/main-260700f879.min.css')
-    //- link(type='text/css', rel='stylesheet', href='http://localhost:8044/css/exchange/main.css')
+    link(type='text/css', rel='stylesheet', href='https://assets.ournetcdn.net/ournet/css/exchange/main-260700f879.min.css')
+    //- link(type='text/css', rel='stylesheet', href='https://localhost:8044/css/exchange/main.css')
     if (site.head.canonical)
       link(rel='canonical', href=site.head.canonical)
     link(rel='shortcut icon', href=config.favicon)
@@ -125,9 +125,9 @@ html(lang=currentCulture.language, ng-app="ournet")
     script.
       window.globalInitData={cn: '#{config.country}',ul:'#{currentCulture.language}',currency:'#{config.currency}'};
     script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js')
-    script(type='text/javascript', src='http://assets.ournetcdn.net/ournet/js/exchange/main-dea2176ada.min.js')
-    //- script(type='text/javascript', src='http://localhost:8044/js/exchange/main.js')
-    script(type='text/javascript', src='http://assets.ournetcdn.net/root/js/angular/angular-locale_#{currentCulture.language}.min.js')
+    script(type='text/javascript', src='https://assets.ournetcdn.net/ournet/js/exchange/main-dea2176ada.min.js')
+    //- script(type='text/javascript', src='https://localhost:8044/js/exchange/main.js')
+    script(type='text/javascript', src='https://assets.ournetcdn.net/root/js/angular/angular-locale_#{currentCulture.language}.min.js')
     block scripts
     
     script.

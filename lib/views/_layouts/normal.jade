@@ -30,7 +30,7 @@ block content_header
             if (weatherWidget && weatherWidget.forecast)
               #widget-weather
                 span.symbol
-                  img(alt='', src='http://assets.ournetcdn.net/root/img/icons/weather/48/'+weatherWidget.forecast.symbol.id+'.png', title=weatherWidget.forecast.symbol.name)
+                  img(alt='', src='https://assets.ournetcdn.net/root/img/icons/weather/48/'+weatherWidget.forecast.symbol.id+'.png', title=weatherWidget.forecast.symbol.name)
                 span.name
                   a(href=weatherWidget.place.url)= weatherWidget.place.name
                   span.no= weatherWidget.forecast.temperature + '°C'
