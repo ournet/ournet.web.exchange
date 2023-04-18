@@ -35,7 +35,6 @@
     "ms": "^2.0.0",
     "ournet.data": "^0.1.1",
     "ournet.data.exchange": "^0.2.1",
-    "ournet.logger": "^0.1.0",
     "ournet.utils": "^0.1.0",
     "response-time": "^2.2.0",
     "urlset": "^0.4.0"
