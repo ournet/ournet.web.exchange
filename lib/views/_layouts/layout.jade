@@ -130,11 +130,11 @@ html(lang=currentCulture.language, ng-app="ournet")
     script(type='text/javascript', src='https://assets.ournetcdn.net/root/js/angular/angular-locale_#{currentCulture.language}.min.js')
     block scripts
 
-    script(async='', src={`https://www.googletagmanager.com/gtag/js?id=${config.googleTagId}`})
+    script(async='', src=`https://www.googletagmanager.com/gtag/js?id=#{config.googleTagId}`)
     
     script.
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
-      gtag('config', '${config.googleTagId}');
+      gtag('config', '#{config.googleTagId}');
 
     script(async='', src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-559bd1344703b48a")
